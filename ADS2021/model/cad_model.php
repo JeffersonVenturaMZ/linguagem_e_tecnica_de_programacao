@@ -5,10 +5,11 @@
     $sobreNome = mysqli_real_escape_string($conn, $_POST["SobreNome"]);
     $usuario = mysqli_real_escape_string($conn, $_POST["Usuario"]);
     $senha = mysqli_real_escape_string($conn, $_POST["Senha"]);
+    $pais = mysqli_real_escape_string($conn, $_POST["pais"]);
 
-    echo("$nome - $sobreNome - $usuario -  $senha");
+    echo("$nome - $sobreNome - $usuario -  $senha - $pais");
 
-    $query = "INSERT INTO tbPessoa(Nome, SobreNome, Usuario, Senha) VALUES ('$nome', '$sobreNome', '$usuario', $senha)";
+    $query = "INSERT INTO tbPessoa(Nome, SobreNome, Usuario, Senha, pais) VALUES ('$nome', '$sobreNome', '$usuario', '$senha', '$pais')";
 
     echo("<br><br>");
     echo ($query);
