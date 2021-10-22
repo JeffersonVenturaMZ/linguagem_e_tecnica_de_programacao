@@ -13,16 +13,23 @@
         if(mysqli_num_rows($resultado) != 0){
             while($retornoDoSelect = mysqli_fetch_assoc($resultado))
             {
-                // var_dump( $retornoDoSelect['usuario']);
-                // die;
-                
                 if($retornoDoSelect["usuario"] == $usuario && $retornoDoSelect["senha"] == $senha){
                     print_r($retornoDoSelect);
                     echo($retornoDoSelect["Id"]);
-                    echo("Login Efetuado com Sucesso! Bem-Vindo!!");
+                    echo("Login Efetuado com Sucesso! Bem-Vindo!");
 
                     $_SESSION["login"] = $retornoDoSelect["Id"]; 
-                   
+                    
+                    $qry= "SELECT * FROM tbpessoa WHERE Id = ".$retornoDoSelect["id_tbPessoa"];
+
+                    if($resultadoPessoa = mysqli_query($conn, $qry)){
+                        $_SESSION['errologin']= "Usuário não encontrado na base";
+                        header("location:../view/login.php");
+                    }  
+                    $retornoDoSelectPessoa = mysqli_fetch_assoc($resultadoPessoa);
+                    $_SESSION["nome"] = $retornoDoSelectPessoa["Nome: "];
+                    $_SESSION["sobrenome"] = $retornoDoSelectPessoa["Sobrenome: "];                    
+
                     header("location:../view/pgInterna.php?id=".$retornoDoSelect["Id"]);
                 }
                 else
