@@ -29,19 +29,21 @@ if ($resultado = mysqli_query($conn, $query))
                 $resultadoPessoa = mysqli_query($conn, $query2);
                 // var_dump($resultadoPessoa);
                 // die;
-                if ($resultadoPessoa -> num_rows == 0)
+                if ($resultadoPessoa->num_rows == 0)
                 {
                     $_SESSION['errologin'] = "Usuário não encontrado na base";
                     header("location:../view/login.php");
                 }
-                else{
+                else
+                {
                     $retornoDoSelectPessoa = mysqli_fetch_assoc($resultadoPessoa);
                     // var_dump($retornoDoSelectPessoa["nome"]);
                     // die;
                     $_SESSION["nome"] = $retornoDoSelectPessoa["nome"];
                     $_SESSION["sobrenome"] = $retornoDoSelectPessoa["sobrenome"];
 
-                    header("location:../view/pgInterna.php?id=" . $retornoDoSelect["id"]);
+                    //passagem de dados através do get
+                    header("location:../view/pgInterna.php?acesso=" . $retornoDoSelectPessoa["id_tbpessoa_tbcargo"]);
                 }
             }
             else
