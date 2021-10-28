@@ -9,7 +9,8 @@
 
     echo("$nome - $sobreNome - $usuario -  $senha - $pais");
 
-    $query = "INSERT INTO tbPessoa(Nome, SobreNome, Usuario, Senha, pais) VALUES ('$nome', '$sobreNome', '$usuario', '$senha', '$pais')";
+    $query = "INSERT INTO tbpessoa(nome, sobrenome, usuario, senha, pais) 
+                VALUES ('$nome', '$sobreNome', '$usuario', '$senha', '$pais')";
 
     echo("<br><br>");
     echo ($query);
@@ -22,7 +23,8 @@
     $id = mysqli_insert_id($conn);
     echo("<br><br>id =  $id");
 
-    $query2 = "INSERT INTO tbLogin(usuario, senha, id_tbPessoa) VALUES ('$usuario', $senha, $id)";
+    $query2 = "INSERT INTO tblogin(usuario, senha, id_tbPessoa) 
+                VALUES ('$usuario', $senha, $id)";
 
     if(!mysqli_query($conn, $query2))
     {

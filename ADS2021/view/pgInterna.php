@@ -1,6 +1,7 @@
 <?php
     session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -19,6 +20,11 @@
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li>
+            <?php
+                echo("Bem-Vindo " . $_SESSION["nome"] . " " .$_SESSION["sobrenome"]);
+            ?>            
+          </li>          
+          <li>
             <a href="#">Times</a>
           </li>
           <li>
@@ -26,11 +32,6 @@
           </li>
           <li>
             <a href="#">Configurações</a>
-          </li>
-          <li>
-            <?php
-                echo("Bem-Vindo ".$_SESSION["nome"]." ".$_SESSION["sobrenome"]);
-            ?>
           </li>
         </ul>
       </div>
